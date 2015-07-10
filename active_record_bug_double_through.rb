@@ -7,9 +7,9 @@ end
 
 gemfile(true) do
   source 'https://rubygems.org'
-  gem 'rails', github: 'rails/rails'
-  gem 'arel', github: 'rails/arel'
-  gem 'sqlite3'
+    # Activate the gem you are reporting the issue against.
+    gem 'activerecord', '4.2.0'
+    gem 'sqlite3'
 end
 
 require 'active_record'
@@ -65,7 +65,9 @@ class BugTest < Minitest::Test
     reply = Reply.create!(comment: comment)
     subreply = Subreply.new(reply: reply)
 
-    subreply.comment
+    puts "subreply's comment is #{subreply.comment}"
+    puts "subreply's comment's post is #{subreply.comment.post}"
+    puts "subreply's post is #{subreply.post}"
 
     # assert_equal 1, post.comments.count
     # assert_equal 1, Comment.count
